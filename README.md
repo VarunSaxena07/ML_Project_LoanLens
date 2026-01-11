@@ -22,6 +22,16 @@ The following models were trained and evaluated:
 Model performance was compared using accuracy, precision, recall, F1-score,
 and confusion matrix.
 
+##  Model Comparison
+
+| Model                | Accuracy (%) | Precision (%) | Recall (%) | F1-Score (%) |
+|----------------------|--------------|---------------|------------|--------------|
+| Logistic Regression  | **87.0**     | 78.69         | **78.69** | **78.69**   |
+| K-Nearest Neighbors  | 75.0         | 62.22         | 45.90     | 52.83       |
+| Naive Bayes          | 86.5         | **80.36**     | 73.77     | 76.92       |
+
+**“Although Logistic Regression performed best overall, Naive Bayes achieved higher precision, making it useful in scenarios where minimizing false loan approvals is critical.”**
+
 ## Final Model Selection
 Based on comparative evaluation across multiple metrics, **Naive Bayes**
 demonstrated the most consistent performance and was selected as the final
