@@ -2,33 +2,42 @@ import streamlit as st
 import joblib
 import numpy as np
 
-# Load saved model and scaler
+# Load model and scaler (your existing files)
 model = joblib.load("loan_model.pkl")
 scaler = joblib.load("scaler.pkl")
 
 st.title("🏦 LoanLens")
-st.write("Simple Loan Approval Prediction App")
+st.write("LoanLens helps assess loan eligibility based on applicant financial data")
 
-# --- User Inputs ---
-applicant_income = st.number_input("Applicant Income", min_value=0)
-coapplicant_income = st.number_input("Coapplicant Income", min_value=0)
-loan_amount = st.number_input("Loan Amount", min_value=0)
-loan_term = st.number_input("Loan Term (in months)", min_value=0)
-credit_history = st.selectbox("Credit History", [0, 1])
 
-# Predict button
+# ---------- INPUTS ----------
+credit_score = st.number_input("Credit Score", 300, 900)
+applicant_income = st.number_input("Applicant Income")
+coapplicant_income = st.number_input("Coapplicant Income")
+loan_amount = st.number_input("Loan Amount")
+loan_term = st.number_input("Loan Term")
+dti_ratio = st.number_input("DTI Ratio")
+existing_loans = st.number_input("Existing Loans")
+savings = st.number_input("Savings")
+collateral_value = st.number_input("Collateral Value")
+employment_salaried = st.selectbox("Salaried?", [0, 1])
+
+# ---------- PREDICT ----------
 if st.button("Predict Loan Approval"):
-    # Put inputs into array (ORDER MATTERS!)
-    input_data = np.array([[applicant_income,
-                            coapplicant_income,
-                            loan_amount,
-                            loan_term,
-                            credit_history]])
+    input_data = np.array([[  
+    credit_score,
+    applicant_income,
+    coapplicant_income,
+    loan_amount,
+    loan_term,
+    dti_ratio,
+    existing_loans,
+    savings,
+    collateral_value,
+    employment_salaried
+    ]])
 
-    # Scale input
     input_scaled = scaler.transform(input_data)
-
-    # Prediction
     prediction = model.predict(input_scaled)
 
     if prediction[0] == 1:
