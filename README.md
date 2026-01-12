@@ -1,3 +1,10 @@
+## 🚀 Live Demo
+
+LoanLens is a Streamlit-based loan approval prediction application powered by machine learning.  
+Try the live app here:
+
+🔗 https://loanlens-loanpredictor.streamlit.app/
+
 # LoanLens – Loan Approval Prediction System 
 
 LoanLens is a machine learning project that predicts loan approval outcomes
